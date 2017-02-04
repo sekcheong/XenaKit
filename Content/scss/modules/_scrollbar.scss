@@ -1,0 +1,32 @@
+﻿@charset "UTF-8";
+@import '../base/base';
+
+
+
+div.ux-scrollbar {
+	margin: 0;
+	padding: 0;
+	border: none;
+	background-color:$scrollbar-background-color;
+	width: $scrollbar-width;	
+
+	div.ux-scrollbar-thumb {
+		@extend div.ux-scrollbar;
+		background-color: $scrollbar-thumb-background-color;
+		border-radius: $scrollbar-width / 2;		
+		cursor: default;
+
+		&:hover:not([disabled]) {
+			background-color: $scrollbar-thumb-hover-background-color;
+		}
+	}
+
+	div.ux-scrollbar-thumb-active {
+		@extend div.ux-scrollbar-thumb;
+		background-color: $scrollbar-thumb-active-background-color;
+
+		&:hover:not([disabled]) {
+			background-color: $scrollbar-thumb-active-background-color;
+		}
+	}
+}
