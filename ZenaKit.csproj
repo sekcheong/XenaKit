@@ -232,6 +232,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <TypeScriptCompile Include="Scripts\UI\Views\UIRect.ts" />
+    <TypeScriptCompile Include="Scripts\UI\Views\UIPoint.ts" />
+    <TypeScriptCompile Include="Scripts\UI\Views\UISize.ts" />
+    <TypeScriptCompile Include="Scripts\UI\Views\UIView.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

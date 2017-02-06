@@ -12,8 +12,8 @@ using System.Data;
 
 namespace autocomplete.Controllers
 {
-    public class RecordSelectController : ApiController
-    {
+	public class RecordSelectController : ApiController
+	{
 		private const string OltpDbConnectionStringKey = "OperationalDB";
 		private static ConnectionStringSettings _connSetting = null;
 
@@ -32,9 +32,9 @@ namespace autocomplete.Controllers
 			}
 		}
 
-        // GET: api/RecordSelect
-        public IEnumerable<string> Get()
-        {
+		// GET: api/RecordSelect
+		public IEnumerable<string> Get()
+		{
 			StringBuilder sb = new StringBuilder();
 			sb.AppendLine("SELECT LogTypeID, DisplayName, Name, ResTypeID, Description ");
 			sb.AppendLine("FROM LogTypes");
@@ -61,29 +61,29 @@ namespace autocomplete.Controllers
 				throw new Exception("Error loading context IDs", ex);
 			}
 
-            return new string[] { "value1", "value2" };
-        }
+			return new string[] { "value1", "value2" };
+		}
 
-        // GET: api/RecordSelect/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+		// GET: api/RecordSelect/5
+		public string Get(int id)
+		{
+			return "value";
+		}
 
-        // POST: api/RecordSelect
-        public void Post([FromBody]string value)
-        {
-        }
+		// POST: api/RecordSelect
+		public void Post([FromBody]string value)
+		{
+		}
 
-        // PUT: api/RecordSelect/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+		// PUT: api/RecordSelect/5
+		public void Put(int id, [FromBody]string value)
+		{
+		}
 
-        // DELETE: api/RecordSelect/5
-        public void Delete(int id)
-        {
+		// DELETE: api/RecordSelect/5
+		public void Delete(int id)
+		{
 
-        }
-    }
+		}
+	}
 }
