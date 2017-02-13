@@ -21,13 +21,11 @@
 			return this._width;
 		}
 
-		public set width(value: number) {
-			console.log("width:", typeof value);
+		public set width(value: number) {			
 			if (typeof value === "number") {
 				this._width = value;
 			}
-			else {
-				console.log("error");
+			else {				
 				throw new Error("Invalid parameter type: " + value);
 			}
 		}

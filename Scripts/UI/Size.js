@@ -18,12 +18,10 @@ var Zena;
                     return this._width;
                 },
                 set: function (value) {
-                    console.log("width:", typeof value);
                     if (typeof value === "number") {
                         this._width = value;
                     }
                     else {
-                        console.log("error");
                         throw new Error("Invalid parameter type: " + value);
                     }
                 },

@@ -1,5 +1,5 @@
-﻿
-QUnit.test("Size - Constructors", function (assert) {
+﻿QUnit.module("UI.Size()");
+QUnit.test("Constructors", function (assert) {
 	var s = new Zena.UI.Size();
 	assert.ok((s != null), "null check");
 	assert.equal(s.width, 0, "s.width == 0");
@@ -12,7 +12,7 @@ QUnit.test("Size - Constructors", function (assert) {
 });
 
 
-QUnit.test("Size - Properties", function (assert) {
+QUnit.test("Properties", function (assert) {
 	var s = new Zena.UI.Size(1501, 3100);
 
 	assert.equal(s.width, 1501, "s.width == 1501");
@@ -25,21 +25,21 @@ QUnit.test("Size - Properties", function (assert) {
 });
 
 
-QUnit.test("Size - TypeCheck", function (assert) {
+QUnit.test("TypeCheck", function (assert) {
 	var s = new Zena.UI.Size(150, 300);
 	try {
 		s.width = "123";
-		assert.ok(false, "Exception not thrown!");
+		assert.ok(false, "s.width: Exception not thrown!");
 	}
 	catch (ex) {
-		assert.ok(true, "Exception thrown for attempting assign 'string' to 'number'.");
+		assert.ok(true, "s.width: Exception thrown for attempting assign 'string' to 'number.'");
 	}
 
 	try {
 		s.height = "banana";
-		assert.ok(false, "Exception not thrown!");
+		assert.ok(false, "s.height: Exception not thrown!");
 	}
 	catch (ex) {
-		assert.ok(true, "Exception thrown for attempting assign 'string' to 'number'.");
+		assert.ok(true, "s.height: Exception thrown for attempting assign 'string' to 'number.'");
 	}
 });
