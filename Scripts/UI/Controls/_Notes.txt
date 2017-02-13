@@ -1,0 +1,379 @@
+﻿
+Builder pattern
+Rectangle r1 = RectangleBuilder.create()
+	.x(10)
+	.y(20)
+	.width(100)
+	.height(200)
+	.fill(Color.RED)
+	.build();
+
+// Create a partially configured RectangleBuilder
+RectangleBuilder builder = RectangleBuilder.create()
+	.width(100)
+	.height(200)
+	.fill(Color.RED);
+// Create a Rectangles at (10, 20) and (120, 20) using the builder
+Rectangle r3 = builder.x(10).y(20).build();
+Rectangle r4 = builder.x(120).y(20).build();
+
+Concept of Bounds and Bounding Box
+
+Resizable component:
+• Preferred size
+• Minimum size
+• Maximum size
+	
+• USE_COMPUTED_SIZE
+• USE_PREF_SIZE
+
+Relayout 
+  Parent.requestLayout()
+
+Layout Pane
+• Static layout
+• Dynamic layout
+
+//
+Container Class Description
+===========================
+Group - A Group applies effects and transformations collectively to all its children.
+Pane  - It is used for absolute positioning of its children.
+HBox  - It arranges its children horizontally in a single row.
+VBox  - It arranges its children vertically in a single column.
+FlowPane - It arranges its children horizontally or vertically in rows or columns.If they do not fit
+	in a single row or column, they are wrapped at the specified width or height.
+BorderPane - It divides its layout area in the top, right, bottom, left, and center regions and places
+each of its children in one of the five regions.
+StackPane - It arranges its children in a back- to - front stack.
+TilePane - It arranges its children in a grid of uniformly sized cells.
+GridPane - It arranges its children in a grid of variable sized cells.
+AnchorPane - It arranges its children by anchoring their edges to the edges of the layout area.
+TextFlow - It lays out rich text whose content may consist of several Text nodes.
+
+
+• The HPos Enum
+The HPos enum defines three constants: LEFT, CENTER, and RIGHT, to describe the horizontal positioning and
+alignment.
+• The VPos Enum
+The constants of the VPos enum describe vertical positioning and alignment.It has four constants: TOP,
+	CENTER, BASELINE, and BOTTOM.
+• The Pos Enum
+The constants in the Pos enum describe vertical and horizontal positioning and alignment.It has constants
+for all combinations of VPos and HPos constants.Constants in Pos enum are BASELINE_CENTER, BASELINE_LEFT,
+	BASELINE_RIGHT, BOTTOM_CENTER, BOTTOM_LEFT, BOTTOM_RIGHT, CENTER, CENTER_LEFT, CENTER_RIGHT,
+	TOP_CENTER, TOP_LEFT, and TOP_RIGHT.It has two methods – getHpos() and getVpos() – that return
+objects of HPos and VPos enum types, describing the horizontal and vertical positioning and alignment,
+
+• The Orientation Enum
+• The Orientation enum has two constants, HORIZONTAL and VERTICAL, which denote horizontal and vertical
+orientations, respectively.
+• The Side Enum
+The Side enum has four constants: TOP, RIGHT, BOTTOM, and LEFT, to denote the four sides of a rectangle.
+• The Priority Enum
+Sometimes, a container may have more or less space available than required to layout its children using
+their preferred sizes.The Priority enum is used to denote the priority of a node to grow or shrink when its
+parent has more or less space.It contains three constants: ALWAYS, NEVER, and SOMETIMES.A node with the
+ALWAYS priority always grows or shrinks as the available space increases or decreases.A node with NEVER
+priority never grows or shrinks as the available space increases or decreases.A node with SOMETIMES priority
+grows or shrinks when there are no other nodes with ALWAYS priority or nodes with ALWAYS priority could not
+consume all the increased or decreased space.
+
+• Understanding Region
+Region is the base class for all layout panes.It can be styled with CSS.Unlike Group, it has its own size.It is
+resizable.It can have a visual appearance, for example, with padding, multiple backgrounds, and multiple
+borders.You do not use the Region class directly as a layout pane.If you want to roll out your own layout
+pane, extend the Pane class, which extends the Region class.
+
+• Understanding HBox
+An HBox lays out its children in a single horizontal row.It lets you set the horizontal spacing between adjacent
+children, margins for any children, resizing behavior of children, etc.It uses 0px as the default spacing
+between adjacent children.The default width of the content area and HBox is wide enough to display all its
+children at their preferred widths, and the default height is the largest of the heights of all its children.
+You cannot set the locations for children in an HBox.They are automatically computed by the HBox.
+You can control the locations of children to some extent by customizing the properties of the HBox and
+setting constraints on the children.
+
+alignment ObjectProperty< Pos > It specifies the alignment of children relative to the content area
+of the HBox.The fillHeight property is ignored if the vertical
+alignment is set to BASELINE.The default value is Pos.TOP_LEFT.
+fillHeight BooleanProperty It specifies whether the resizable children are resized to fill the
+full height of the HBox or they are given their preferred heights.
+This property is ignored, if the vertical alignment is set to
+BASELINE.The default value is true.
+spacing DoubleProperty It specifies the horizontal spacing between adjacent children.
+The default value is zero.
+
+• Understanding FlowPane
+A FlowPane is a simple layout pane that lays out its children in rows or columns wrapping at a specified
+width or height.It lets its children flow horizontally or vertically, and hence the name “flow pane.” You
+can specify a preferred wrap length, which is the preferred width for a horizontal flow and the preferred
+height for a vertical flow, where the content is wrapped.A FlowPane is used in situations where the relative
+locations of children are not important: for example, displaying a series of pictures or buttons.A FlowPane
+gives all its children their preferred sizes.Rows and columns may be of different heights and widths.You can
+customize the vertical alignments of children in rows and the horizontal alignments of children in columns.
+
+• Understanding BorderPane
+A BorderPane divides its layout area into five regions: top, right, bottom, left, and center.You can place at
+most one node in each of the five regions.Figure 10- 31 shows five Buttons placed in the five regions of the
+BorderPane – one Button in each region.The Buttons have been labeled the same as their regions in which
+they are placed.Any of the regions may be null.If a region is null, no space is allocated for it.
+
+In a typical Windows application, a screen uses the five regions to places its content.
+• A menu or a toolbar at the top
+• A status bar at the bottom
+• A navigation panel on the left
+• Additional information on the right
+• Main content in the center
+A BorderPane satisfies all the layout requirements for a typical Windows- based GUI screen.This is the
+reason that a BorderPane is most often used as the root node for a scene.Typically, you have more than five
+nodes in a window.If you have more than one node to place in one of the five regions of a BorderPane, add
+the nodes to a layout pane: for example, an HBox, a VBox, etc., and then add the layout pane to the desired
+region of the BorderPane.
+A BorderPane uses the following resizing policies for its children:
+• The children in the top and bottom regions are resized to their preferred heights.Their
+widths are extended to fill the available extra horizontal space, provided the maximum
+widths of the children allow extending their widths beyond their preferred widths.
+• The children in the right and left regions are resized to their preferred widths.Their
+heights are extended to fill the extra vertical space, provided the maximum heights of
+the children allow extending their heights beyond their preferred heights.
+• The child node in the center will fill the rest of the available space in both directions.
+
+• Understanding StackPane
+A StackPane lays out its children in a stack of nodes.It is simple to use.However, it provides a powerful
+means to overlay nodes.Children are drawn in the order they are added.That is, the first child node is drawn
+first; the second child node is drawn next, etc.For example, overlaying text on a shape is as easy as using a
+StackPane: add the shape as the first child node and the text as the second child node.The shape will be
+drawn first followed by the text, which makes it seem as if the text is a part of the shape.
+	Figure 10- 33 shows a window with a StackPane set as the root node for its scene.A Rectangle shape
+and a Text node with text “A Rectangle” are added to the StackPane.The Text is added last, which overlays
+the Rectangle.The outer border is the border of the StackPane.The dashed inner border is the border of the
+Rectangle.
+
+• Understanding TilePane
+A TilePane lays out its children in a grid of uniformly sized cells, known as tiles.TilePanes work similar
+to FlowPanes with one difference: In a FlowPane, rows and columns can be of different heights and widths,
+	whereas in a TilePane, all rows have the same heights and all columns have the same widths.The width of
+the widest child node and the height of the tallest child node are the default widths and heights of all tiles in
+	a TilePane.
+The orientation of a TilePane, which can be set to horizontal or vertical, determines the direction of
+the flow for its content.By default, a TilePane has a horizontal orientation.In a horizontal TilePane, the
+content flows in rows.The content in rows may flow from left to right (the default) or from right to left.In a
+vertical TilePane, the content flow in columns.Figures 10- 37, 10 - 38, and 10- 26 show horizontal and vertical
+TilePanes.
+
+
+• Understanding Control Classes Hierarchy
+Each control in JavaFX is represented by an instance of a class. If multiple controls share basic features, they
+inherit from a common base class. Control classes are included in the javafx.scene.control package.
+A control class is a subclass, direct or indirect, of the Control class, which in turn inherits from the Region.
+Recall that the Region class inherits from the Parent class. Therefore, technically, a Control is also a Parent.
+All our discussions about the Parent and Region classes in the previous chapters also apply to all
+control - related classes.
+A Parent can have children.Typically, a control is composed of another node (sometimes,
+	multiple nodes), which is its child node.Control classes do not expose the list of its children through the
+getChildren() method, and therefore, you cannot add any children to them.
+Control classes expose the list of their internal unmodifiable children through the
+getChildrenUnmodifiable() method, which returns an ObservableList<Node>. You are not required
+to know about the internal children of a control to use the control.However, if you need the list of their
+children, the getChildrenUnmodifiable() method will give you that.
+	Figure 12- 1 shows a class diagram for classes of some commonly used controls.The list of control
+classes is a lot bigger than the one shown in the class diagram.
+
+• Controls
+Understanding the Button Control
+An instance of the Button class represents a command button.Typically, a Button has text as its label and
+an ActionEvent handler is registered to it.The mnemonicParsing property for the Button class is set to true
+by default.
+A Button can be in one of three modes:
+	• A normal button
+	• A default button
+	• A cancel button
+
+• Understanding the Hyperlink Control
+An instance of the Hyperlink class represents a hyperlink control, which looks like a hyperlink in a
+web page.In a web page, a hyperlink is used to navigate to another web page.However, in JavaFX, an
+ActionEvent is triggered when a Hyperlink control is activated, for example, by clicking it, and you are free
+to perform any action in the ActionEvent handler.
+
+• Understanding the MenuButton Control
+A MenuButton control looks like a button and behaves like a menu.When it is activated (by clicking or other
+means), it shows a list of options in the form of a pop- up menu.The list of options in the menu is maintained
+	in an ObservableList< MenuItem > whose reference is returned by the getItems() method.To execute a
+command when a menu option is selected, you need to add the ActionEvent handler to the MenuItems.
+
+• Understanding Choice Buttons
+JavaFX provides several controls to make one or more selections from a list of available choices:
+	• ToggleButton
+	• CheckBox
+	• RadioButton
+
+• Understanding the ToggleButton Control
+ToggleButton is a two- state button control.The two states are selected and unselected.Its selected property
+indicates whether it is selected.The selected property is true when it is in the selected state.Otherwise, it is
+false.When it is in the selected state, it stays depressed.You can toggle between the selected and unselected
+states by pressing it, and hence it got the name ToggleButton.For ToggleButtons, mnemonic parsing is
+enabled by default.
+	ToggleButton springBtn = new ToggleButton("Spring");
+	ToggleButton summerBtn = new ToggleButton("Summer");
+	ToggleButton fallBtn = new ToggleButton("Fall");
+	ToggleButton winterBtn = new ToggleButton("Winter");
+// Create a ToggleGroup
+	ToggleGroup group = new ToggleGroup();
+// Add all ToggleButtons to the ToggleGroup
+	springBtn.setToggleGroup(group);
+	summerBtn.setToggleGroup(group);
+	fallBtn.setToggleGroup(group);
+	winterBtn.setToggleGroup(group);
+
+• Understanding the RadioButton Control
+An instance of the RadioButton class represents a radio button.It inherits from the ToggleButton class.
+Therefore, it has all of the features of a toggle button.A radio button is rendered differently compared to a
+toggle button.Like a toggle button, a radio button can be in one of the two states: selected and unselected.
+Its selected property indicates its current state.Like a toggle button, its mnemonic parsing is enabled by
+default. Like a toggle button, it also sends an ActionEvent when it is selected and unselected.Figure 12- 8
+shows a RadioButton with Summer as its text in selected and unselected states.
+
+There is a significant difference in the use of radio buttons compared to the use of toggle buttons.
+Recall that when toggle buttons are used in a group, there may not be any selected toggle button in the
+group.When radio buttons are used in a group, there must be one selected radio button in the group.Unlike
+a toggle button, clicking a selected radio button in a group does not unselect it.To enforce the rule that
+one radio button must be selected in a group of radio buttons, one radio button from the group is selected
+programmatically by default.
+Tip: Radio buttons are used when the user must make a selection from a list of choices.Toggle buttons are
+used when the user has an option to make one selection or no selection from a list of choices.
+
+
+• Understanding the CheckBox Control
+CheckBox is a three- state selection control: checked, unchecked, and undefined.The undefined state is also
+known as an indeterminate state.A CheckBox supports a selection of three choices: true / false / unknown or
+yes / no / unknown.Usually, a CheckBox has text as a label, but not a graphic (even though it can).Clicking a
+CheckBox transitions it from one state to another cycling through three states.
+A box is drawn for a CheckBox.In the unchecked state, the box is empty.A tick mark (or a check mark)
+is present in the box when it is in the checked state.In the undefined state, a horizontal line is present in the
+box.Figure 12- 10 shows a CheckBox labeled Hungry in its three states.
+
+
+• Understanding the Hybrid Button Control
+With our definitions of different button types, a SplitMenuButton falls under the hybrid category.It combines
+the features of a pop- up menu and a command button.It lets you select an action like a MenuButton control
+and execute a command like a Button control.The SplitMenuButton class inherits from the MenuButton class.
+A SplitMenuButton is divided into two areas: the action area and the menu- open area.When you
+click in the action area, ActionEvent is fired.The registered ActionEvent handlers execute the command.
+When the menu- open area is clicked, a menu is shown from which the user will select an action to execute.
+Mnemonic parsing for SplitMenuButton is enabled by default.
+Figure 12- 12 shows a SplitMenuButton in two states.The picture on the left shows it in the collapsed
+state.In the picture on the right, it shows the menu items.Notice the vertical line dividing the control in two
+halves.The half containing the text Home is the action area.The other half containing the down arrow is the
+
+• ChoiceBox
+• ComboBox
+• ListView
+• ColorPicker
+• DatePicker
+
+ComboBox<String> seasons = new ComboBox<>();
+seasons.getItems().addAll("Spring", "Summer", "Fall", "Winter");
+Using Nodes as Items in ComboBox
+A combo box has two areas:
+• Button area to display the selected item
+• Pop - up area to display the items list
+
+• Understanding the ListView Control
+ListView is used to allow a user to select one item or multiple items from a list of items.Each item in
+	ListView is represented by an instance of the ListCell class, which can be customized.The items list in a
+ListView may contain any type of objects.ListView is a parameterized class. The parameter type is the type
+of the items in the list.If you want to store mixed types of items in a ListView, you can use its raw type, as
+shown in the following code:
+// Create a ListView for any type of items
+ListView seasons = new ListView();
+// Create a ListView for String items
+ListView < String > seasons = new ListView<String>();
+
+
+Showing the Progress of a Task
+When you have a long running task, you need to provide a visual feedback to the user about the progress of
+the task for a better user experience.JavaFX offers two controls to show the progress:
+• ProgressIndicator
+• ProgressBar
+
+• Understanding the ScrollPane Control
+A ScrollPane provides a scrollable view of a node.A ScrollPane consists of a horizontal ScrollBar, a
+vertical ScrollBar, and a content node.The node for which the ScrollPane provides scrolling is the content
+node.If you want to provide a scrollable view of multiple nodes, add them to a layout pane, for example, a
+GridPane, and then, add the layout pane to the ScrollPane as the content node.ScrollPane uses a scroll
+policy to specify when to show a specific scrollbar.The area through which the content is visible is known as
+	viewport.Figure 12- 54 shows a ScrollPane with a Label as its content node.
+
+• Understanding the ScrollBar Control
+ScrollBar is a basic control that does not provide the scrolling feature by itself.It is represented as a
+horizontal or vertical bar that lets users choose a value from a range of values.Figure 12- 53 shows a
+horizontal and a vertical scrollbar.
+
+• content
+• pannable
+• fitToHeight
+• fitToWidth
+• hbarPolicy
+• vbarPolicy
+• hmin
+• hmax
+• hvalue
+• vmin
+• vmax
+• vvalue
+• prefViewportHeight
+• prefViewportWidth
+• viewportBounds
+
+• Understanding the Separator Control
+A Separator is a horizontal or vertical line that separates two groups of controls.Typically, they are used in
+	menus or combo boxes.Figure 12- 56 shows menu items of a restaurant separated by horizontal and vertical
+separators.
+
+
+• Understanding the SplitPane Control
+SplitPane arranges multiple nodes by placing them horizontally or vertically separated by a divider.The
+divider can be dragged by the user, so the node on one side of the divider expands and the node on the other
+side shrinks by the same amount.Typically, each node in a SplitPane is a layout pane containing some
+controls.However, you can use any node, for example, a Button.If you have used Windows Explorer, you
+are already familiar with using a SplitPane.In a Windows Explorer, the divider separates the tree view and
+the list view.Using the divider, you can resize the width of the tree view and the width of the list view resizes
+with the equal amount in the opposite direction.A resizable HTML frameset works similar to a SplitPane.
+	Figure 12- 57 shows a window with a horizontal SplitPane.The SplitPane contains two VBox layout panes,
+		each of them contains a Label and a TextArea.Figure 12- 57 shows the divider dragged to the right, so the
+left VBox gets more width than the right one.
+
+• Understanding the Slider Control
+A Slider lets the user select a numeric value from a numeric range graphically by sliding a thumb (or knob)
+along a track.A slider can be horizontal or vertical.Figure 12- 58 shows a horizontal slider.
+The following properties are related to the current value and the range of values:
+• min
+• max
+• value
+• valueChanging
+• snapToTicks
+The min, max, and value properties are double properties, and they represent the minimum, maximum,
+	and current values, respectively, of the slider.The current value of the slider can be changed by dragging the
+thumb on the track or using the setValue() method.The following snippet of code creates a slider and sets
+its min, max, and value properties to 0, 10, and 3, respectively:
+Slider scoreSlider = new Slider();
+scoreSlider.setMin(0.0);
+scoreSlider.setMax(10.0);
+scoreSlider.setValue(3.0);
+
+• majorTickUnit
+• minorTickCount
+• blockIncrement
+• showTickMarks
+• showTickLabels
+
+• Understanding Menus
+
+• Understanding the ToolBar Control
+ToolBar is used to display a group of nodes, which provide the commonly used action items on a screen.
+	Typically, a ToolBar control contains the commonly used items that are also available through a menu and a
+context menu.
+
+• Understanding TabPane and Tab
+

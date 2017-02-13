@@ -1,5 +1,5 @@
 ﻿namespace Zena.UI.Views {
-	export class UIPoint {
+	export class Point {
 		private _left: number;
 		private _top: number;
 

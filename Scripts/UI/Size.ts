@@ -1,13 +1,13 @@
 ﻿namespace Zena.UI.Views {
-	export class UISize {
+	export class Size {
 		private _width: number;
 		private _height: number;
 
 		constructor()
-		constructor(width?: number, height?: number) {
+		constructor(width?: number, height?: number) {			
 			if (arguments.length == 2) {
 				this.width = width;
-				this.height = height;
+				this.height = height;				
 			}
 			else {
 				this._width = 0;

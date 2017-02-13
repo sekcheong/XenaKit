@@ -216,6 +216,7 @@
     <TypeScriptCompile Include="Scripts\UI\Controls\movableview.ts" />
     <TypeScriptCompile Include="Scripts\UI\Controls\scrollbar.ts" />
     <TypeScriptCompile Include="Scripts\UI\Knockout\components\koinputbox.ts" />
+    <Content Include="Scripts\UI\Controls\_Notes.txt" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -231,11 +232,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <TypeScriptCompile Include="Scripts\UI\Views\UIRect.ts" />
-    <TypeScriptCompile Include="Scripts\UI\Views\UIPoint.ts" />
-    <TypeScriptCompile Include="Scripts\UI\Views\UISize.ts" />
-    <TypeScriptCompile Include="Scripts\UI\Views\UIView.ts" />
+    <TypeScriptCompile Include="Scripts\UI\Common.ts" />
+    <TypeScriptCompile Include="Scripts\UI\Rect.ts" />
+    <TypeScriptCompile Include="Scripts\UI\Point.ts" />
+    <TypeScriptCompile Include="Scripts\UI\Size.ts" />
+    <TypeScriptCompile Include="Scripts\UI\Views\View.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

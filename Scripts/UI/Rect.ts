@@ -1,13 +1,13 @@
 ﻿namespace Zena.UI.Views {
 
-	export class UIRect {
+	export class Rect {
 
-		private _origin: UIPoint;
-		private _size: UISize;
+		private _origin: Point;
+		private _size: Size;
 
 		constructor()
-		constructor(origin?: UIPoint | number, size?: UISize | number, width?: number, height?: number) {
-			if (origin instanceof UIPoint && size instanceof UISize) {
+		constructor(origin?: Point | number, size?: Size | number, width?: number, height?: number) {
+			if (origin instanceof Point && size instanceof Size) {
 
 			}
 			else if (typeof origin == "number" && typeof size == "number" && typeof width == "number" && typeof height == "number") {
@@ -18,12 +18,12 @@
 			}
 		}
 
-		public get origin(): UIPoint {
+		public get origin(): Point {
 			return this._origin;
 		}
 
-		public set origin(newValue: UIPoint) {
-			if (newValue instanceof UIPoint) {
+		public set origin(newValue: Point) {
+			if (newValue instanceof Point) {
 				this._origin = newValue;
 			}
 			else {
@@ -31,12 +31,12 @@
 			}
 		}
 
-		public get size(): UISize {
+		public get size(): Size {
 			return this._size;
 		}
 
-		public set size(newValue: UISize) {
-			if (newValue instanceof UISize) {
+		public set size(newValue: Size) {
+			if (newValue instanceof Size) {
 				this._size = newValue;
 			}
 			else {
