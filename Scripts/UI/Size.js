@@ -18,7 +18,7 @@ var Zena;
                     return this._width;
                 },
                 set: function (value) {
-                    if (typeof value === "number") {
+                    if (typeof value == "number") {
                         this._width = value;
                     }
                     else {
