@@ -236,6 +236,7 @@
     <TypeScriptCompile Include="Scripts\UI\Rect.ts" />
     <TypeScriptCompile Include="Scripts\UI\Point.ts" />
     <TypeScriptCompile Include="Scripts\UI\Size.ts" />
+    <TypeScriptCompile Include="Scripts\UI\Utils.ts" />
     <TypeScriptCompile Include="Scripts\UI\Views\View.ts" />
     <TypeScriptCompile Include="Scripts\UI\Views\ViewCollection.ts" />
   </ItemGroup>

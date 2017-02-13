@@ -1,5 +1,4 @@
-﻿import * as ns from "./Views/View";
-namespace Zena.UI {
+﻿namespace Zena.UI {
 
 	//import ns = Zena.UI.Views;
 

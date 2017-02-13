@@ -4,16 +4,16 @@
 		private _top: number;
 
 		constructor()
-		constructor(left:number, top:number)
+		constructor(left: number, top: number)
 		constructor(left?: number, top?: number) {
-			if (arguments.length == 2) {				
+			if (arguments.length == 2) {
 				this.left = left;
-				this.top = top;				
+				this.top = top;
 			}
 			else {
 				this.left = 0;
 				this.top = 0;
-			}			
+			}
 		}
 
 
@@ -28,7 +28,7 @@
 			}
 			else {
 				throw new Error("Invalid parameter type: " + newValue);
-			}
+			}			
 		}
 
 

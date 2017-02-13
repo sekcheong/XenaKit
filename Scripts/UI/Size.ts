@@ -21,26 +21,27 @@
 			return this._width;
 		}
 
-		public set width(newValue: number) {
-			if (typeof newValue == "number") {
-				this._width = newValue;
+		public set width(value: number) {
+			console.log("width:", typeof value);
+			if (typeof value === "number") {
+				this._width = value;
 			}
 			else {
-				throw new Error("Invalid parameter type: " + newValue);
+				console.log("error");
+				throw new Error("Invalid parameter type: " + value);
 			}
 		}
-
 
 		public get height(): number {
 			return this._height;
 		}
 
-		public set height(newValue: number) {
-			if (typeof newValue == "number") {
-				this._height = newValue;
+		public set height(value: number) {
+			if (typeof value == "number") {
+				this._height = value;
 			}
 			else {
-				throw new Error("Invalid parameter type: " + newValue);
+				throw new Error("Invalid parameter type: " + value);
 			}
 		}
 	}

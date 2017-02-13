@@ -1,4 +1,6 @@
 ﻿
+//private _viewMap: { [key: string]: View; }
+
 Builder pattern
 Rectangle r1 = RectangleBuilder.create()
 	.x(10)
