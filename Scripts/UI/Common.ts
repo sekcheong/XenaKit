@@ -1,9 +1,10 @@
-﻿namespace Zena.UI {
+﻿import * as ns from "./Views/View";
+namespace Zena.UI {
 
-	import ns = Zena.UI.Views;
+	//import ns = Zena.UI.Views;
 
-	export function createView(): ns.View {
-		return new ns.View();
-	}
+	//export function createSize(): ns.Size {
+	//	return new ns.Size();		
+	//}
 
 }

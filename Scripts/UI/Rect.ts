@@ -1,4 +1,4 @@
-﻿namespace Zena.UI.Views {
+﻿namespace Zena.UI {
 
 	export class Rect {
 
@@ -6,21 +6,25 @@
 		private _size: Size;
 
 		constructor()
+		constructor(left: number, top: number, width: number, height: number)
+		constructor(origin: Point, size: Size)
 		constructor(origin?: Point | number, size?: Size | number, width?: number, height?: number) {
 			if (origin instanceof Point && size instanceof Size) {
-
+				this._origin = origin;
+				this._size = size;
 			}
 			else if (typeof origin == "number" && typeof size == "number" && typeof width == "number" && typeof height == "number") {
-
-			}
-			else {
-
-			}
+				this._origin = new Point(origin as number, size as number);
+				this._size = new Size(width, height);
+			}			
 		}
+
 
 		public get origin(): Point {
+
 			return this._origin;
 		}
+
 
 		public set origin(newValue: Point) {
 			if (newValue instanceof Point) {
@@ -31,9 +35,11 @@
 			}
 		}
 
+
 		public get size(): Size {
 			return this._size;
 		}
+
 
 		public set size(newValue: Size) {
 			if (newValue instanceof Size) {

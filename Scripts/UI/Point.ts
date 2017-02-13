@@ -1,9 +1,10 @@
-﻿namespace Zena.UI.Views {
+﻿namespace Zena.UI {
 	export class Point {
 		private _left: number;
 		private _top: number;
 
 		constructor()
+		constructor(left:number, top:number)
 		constructor(left?: number, top?: number) {
 			if (arguments.length == 2) {				
 				this.left = left;
