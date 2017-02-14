@@ -1,5 +1,5 @@
-﻿
-QUnit.module("UI.Point()");
+﻿QUnit.module("UI.Point()");
+
 QUnit.test("Constructors", function (assert) {
 	var p = new Zena.UI.Point();
 	assert.ok((p != null), "null check");

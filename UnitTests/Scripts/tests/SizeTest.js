@@ -1,4 +1,5 @@
 ﻿QUnit.module("UI.Size()");
+
 QUnit.test("Constructors", function (assert) {
 	var s = new Zena.UI.Size();
 	assert.ok((s != null), "null check");
